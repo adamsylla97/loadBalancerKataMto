@@ -19,7 +19,28 @@ public class ServerLoadBalancerTest {
 	public void balancingServerWithNoVms_serverStaysEmpty(){
 		Server theServer = a(server().withCapacity(1));
 		balancing(aServerListWith(theServer), anEmptyListOfVms());
-		assertThat(theServer, hasCurrentLoadOf(0.0));
+		assertThat(theServer, hasCurrentLoadOf(0.0d));
+	}
+
+	@Test
+	public void balancingOneServerWithOneSlotCapacity_andOneSlotVm_fillsServerWithTheVm(){
+		Server theServer = a(server().withCapacity(1));
+		Vm theVm = a(vm().ofSize(1));
+		balancing(aServerListWith(theServer), aVmsListWith(theVm));
+		assertThat(theServer, hasCurrentLoadOf(100.0d));
+		assertThat("server should containt the vm", theServer.contains(theVm));
+	}
+
+	private Vm[] aVmsListWith(Vm... vms) {
+		return vms;
+	}
+
+	private Vm a(VmBuilder builder){
+		return builder.build();
+	}
+
+	private VmBuilder vm() {
+		return new VmBuilder();
 	}
 
 	private void balancing(Server[] servers, Vm[] vms) {
