@@ -9,6 +9,10 @@ public class ServerBuilder {
         return this;
     }
 
+    public static ServerBuilder server() {
+        return new ServerBuilder();
+    }
+
     public Server build() {
         return new Server();
     }
