@@ -1,6 +1,7 @@
 package edu.iis.mto.serverloadbalancer;
 
 
+import static edu.iis.mto.serverloadbalancer.CurrentCountOfVmsMatcher.*;
 import static edu.iis.mto.serverloadbalancer.CurrentLoadPercentageMatcher.*;
 import static edu.iis.mto.serverloadbalancer.ServerBuilder.*;
 import static edu.iis.mto.serverloadbalancer.VmBuilder.*;
@@ -61,10 +62,6 @@ public class ServerLoadBalancerTest {
 		assertThat("server should contain second vm", theServer.contains(theFirstVm));
 		assertThat(theServer, hasExpectedCountOf(2));
 
-	}
-
-	private Matcher<? super Server> hasExpectedCountOf(int expectedCountOfVms) {
-		return new CurrentCountOfVmsMatcher(expectedCountOfVms);
 	}
 
 	private Vm[] listWithVms(Vm... vms) {
