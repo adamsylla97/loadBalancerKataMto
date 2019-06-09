@@ -9,9 +9,10 @@ public class Server {
     public double currentLoadPercentage;
     public int capacity;
     private List<Vm> vms = new ArrayList<>();
+    private double initialLoad;
 
     public boolean contains(Vm theVm) {
-        return true;
+        return vms.contains(theVm);
     }
 
     public Server(int capacity) {
