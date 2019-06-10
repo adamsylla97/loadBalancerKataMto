@@ -1,6 +1,7 @@
 package edu.iis.mto.serverloadbalancer;
 
 
+import static edu.iis.mto.serverloadbalancer.CurrentServerCountOfVmsMatcher.*;
 import static edu.iis.mto.serverloadbalancer.CurrentServerLoadMatcher.*;
 import static edu.iis.mto.serverloadbalancer.ServerBuilder.*;
 import static edu.iis.mto.serverloadbalancer.VmBuilder.*;
@@ -67,8 +68,18 @@ public class ServerLoadBalancerTest {
 
 	}
 
-	private Matcher<? super Server> hasVmCountOf(int expectedVmsCount) {
-		return new CurrentServerCountOfVmsMatcher(expectedVmsCount);
+	@Test
+	public void aVm_shouldBeBalanced_onLessLoadedServerFirst(){
+
+		Server moreLoadedServer = a(server().withCapacity(100).withCurrentLoad(50.0d));
+		Server lessLoadedServer = a(server().withCapacity(100).withCurrentLoad(45.0d));
+		Vm theVm = a(vm().ofSize(1));
+
+		balancing(listWithServers(moreLoadedServer,lessLoadedServer), listWithVms(theVm));
+
+		assertThat("server should contain vm", lessLoadedServer.contains(theVm));
+		assertThat("server should not contain vm", !moreLoadedServer.contains(theVm));
+
 	}
 
 	private Vm[] listWithVms(Vm... vms) {
