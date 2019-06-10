@@ -22,4 +22,8 @@ public class Server {
         currentLoadPercentage = (double)vm.size / (double)capacity * MAXIMUM_LOAD;
         vms.add(vm);
     }
+
+    public boolean canFit(Vm vm) {
+        return currentLoadPercentage + (double)vm.size / (double) capacity * MAXIMUM_LOAD <= MAXIMUM_LOAD;
+    }
 }
