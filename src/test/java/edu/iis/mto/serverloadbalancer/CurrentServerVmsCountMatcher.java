@@ -23,4 +23,8 @@ public class CurrentServerVmsCountMatcher extends TypeSafeMatcher<Server> {
     @Override protected void describeMismatchSafely(Server item, Description description) {
         description.appendText("current server count of vms: ").appendValue(item.getVmsCount());
     }
+
+    public static CurrentServerVmsCountMatcher hasVmCountOf(int expectedVmsCount) {
+        return new CurrentServerVmsCountMatcher(expectedVmsCount);
+    }
 }
