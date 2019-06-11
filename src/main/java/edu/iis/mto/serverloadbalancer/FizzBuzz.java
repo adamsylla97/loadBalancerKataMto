@@ -3,12 +3,14 @@ package edu.iis.mto.serverloadbalancer;
 public class   FizzBuzz {
 
     public String check(int number) {
+        String result = "";
         if(isDividableByThree(number)){
-            return "Fizz";
-        } else if (isDividableByFive(number)){
-            return "Buzz";
+            result += "Fizz";
         }
-        return "aaa";
+        if (isDividableByFive(number)){
+            result += "Buzz";
+        }
+        return result;
     }
 
     private boolean isDividableByFive(int number) {

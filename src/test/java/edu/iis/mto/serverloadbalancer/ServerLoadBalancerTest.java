@@ -29,4 +29,12 @@ public class ServerLoadBalancerTest {
 		assertThat("result should contain Buzz", result.contains("Buzz"));
 
 	}
+
+	@Test
+	public void shouldReturnFizzBuzzWhenNumberIsDivisibleByFiveAndThree(){
+
+		String result = fizzBuzz.check(15);
+		assertThat("result should contain FizzBuzz", result.contains("FizzBuzz"));
+
+	}
 }
