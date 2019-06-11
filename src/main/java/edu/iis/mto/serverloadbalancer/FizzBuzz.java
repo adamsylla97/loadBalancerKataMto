@@ -10,6 +10,9 @@ public class   FizzBuzz {
         if (isDividableByFive(number)){
             result += "Buzz";
         }
+        if(result.isEmpty()){
+            result = String.valueOf(number);
+        }
         return result;
     }
 
