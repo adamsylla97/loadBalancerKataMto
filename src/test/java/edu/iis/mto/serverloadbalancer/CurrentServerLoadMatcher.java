@@ -1,7 +1,6 @@
 package edu.iis.mto.serverloadbalancer;
 
 import org.hamcrest.Description;
-import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
 
 public class CurrentServerLoadMatcher extends TypeSafeMatcher<Server> {
@@ -14,7 +13,7 @@ public class CurrentServerLoadMatcher extends TypeSafeMatcher<Server> {
     }
 
     @Override protected boolean matchesSafely(Server server) {
-        return doublesAreEqual(expectedServerLoadPercentage, server.currentLoadPercentage);
+        return doublesAreEqual(expectedServerLoadPercentage, server.getCurrentLoadPercentage());
     }
 
     private boolean doublesAreEqual(double d1, double d2){
