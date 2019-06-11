@@ -4,6 +4,7 @@ package edu.iis.mto.serverloadbalancer;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class ServerLoadBalancerTest {
@@ -12,7 +13,12 @@ public class ServerLoadBalancerTest {
 		assertThat(true, equalTo(true));
 	}
 
-	FizzBuzz fizzBuzz = new FizzBuzz();
+	private FizzBuzz fizzBuzz;
+
+	@Before
+	public void setup(){
+		fizzBuzz = new FizzBuzz();
+	}
 
 	@Test
 	public void shouldReturnFizzWhenNumberIsDivisibleByThree(){
@@ -40,9 +46,8 @@ public class ServerLoadBalancerTest {
 
 	@Test
 	public void shouldReturnNumberWhenNumberIsNotDivisibleByFiveAndThree() throws Exception {
-		// When
+
 		String result = fizzBuzz.check(1);
-		// Then
 		assertThat("result should contain number",result.contains("1"));
 	}
 }

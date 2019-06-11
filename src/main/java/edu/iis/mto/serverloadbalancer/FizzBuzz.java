@@ -2,13 +2,16 @@ package edu.iis.mto.serverloadbalancer;
 
 public class   FizzBuzz {
 
+    private static final String VALUE_WHEN_NUMBER_IS_DIVIDABLE_BY_THREE = "Fizz";
+    private static final String VALUE_WHEN_NUMBER_IS_DIVIDABLE_BY_FIVE = "Buzz";
+
     public String check(int number) {
         String result = "";
         if(isDividableByThree(number)){
-            result += "Fizz";
+            result += VALUE_WHEN_NUMBER_IS_DIVIDABLE_BY_THREE;
         }
         if (isDividableByFive(number)){
-            result += "Buzz";
+            result += VALUE_WHEN_NUMBER_IS_DIVIDABLE_BY_FIVE;
         }
         if(result.isEmpty()){
             result = String.valueOf(number);
