@@ -22,4 +22,12 @@ public class ServerLoadBalancerTest {
 
 	}
 
+	@Test
+	public void shouldReturnBuzzWhenNumberIsDivibleByFize(){
+
+		FizzBuzz fizzBuzz = new FizzBuzz();
+		String result = fizzBuzz.check(5);
+		assertThat("result should contain Buzz", result.contains("Buzz"));
+
+	}
 }
