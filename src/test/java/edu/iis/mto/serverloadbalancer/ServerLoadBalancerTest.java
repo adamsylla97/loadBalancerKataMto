@@ -12,11 +12,11 @@ public class ServerLoadBalancerTest {
 		assertThat(true, equalTo(true));
 	}
 
+	FizzBuzz fizzBuzz = new FizzBuzz();
 
 	@Test
 	public void shouldReturnFizzWhenNumberIsDivisibleByThree(){
 
-		FizzBuzz fizzBuzz = new FizzBuzz();
 		String result = fizzBuzz.check(3);
 		assertThat("result should contain Fizz: ",result.contains("Fizz"));
 
@@ -25,7 +25,6 @@ public class ServerLoadBalancerTest {
 	@Test
 	public void shouldReturnBuzzWhenNumberIsDivibleByFize(){
 
-		FizzBuzz fizzBuzz = new FizzBuzz();
 		String result = fizzBuzz.check(5);
 		assertThat("result should contain Buzz", result.contains("Buzz"));
 
