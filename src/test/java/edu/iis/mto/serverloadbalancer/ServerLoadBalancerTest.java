@@ -13,4 +13,13 @@ public class ServerLoadBalancerTest {
 	}
 
 
+	@Test
+	public void shouldReturnFizzWhenNumberIsDivisibleByThree(){
+
+		FizzBuzz fizzBuzz = new FizzBuzz();
+		String result = fizzBuzz.check(3);
+		assertThat("result should contain Fizz: ",result.contains("Fizz"));
+
+	}
+
 }
